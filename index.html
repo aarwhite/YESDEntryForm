@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>School Competition Entry Form</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Competition Entry Form</h1>
+            <p>Register your school team for the upcoming challenge.</p>
+        </header>
+
+        <form id="entryForm">
+            <div class="form-section">
+                <h2>School Details</h2>
+                <div class="form-group">
+                    <label for="schoolName">School Name</label>
+                    <input type="text" id="schoolName" name="schoolName" required placeholder="e.g. St. Mary's High School">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Contact Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="contactName">Contact Name</label>
+                        <input type="text" id="contactName" name="contactName" required placeholder="Teacher or Coordinator Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactNumber">Contact Number</label>
+                        <input type="tel" id="contactNumber" name="contactNumber" required placeholder="e.g. 020 1234 5678">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>Team Details</h2>
+                <div class="form-group">
+                    <label for="ageGroup">Age Group</label>
+                    <select id="ageGroup" name="ageGroup" required>
+                        <option value="" disabled selected>Select Year Group</option>
+                        <option value="Year 7">Year 7</option>
+                        <option value="Year 9">Year 9</option>
+                        <option value="Sixth Form">Sixth Form</option>
+                    </select>
+                </div>
+
+                <div class="team-members-container">
+                    <label>Team Members</label>
+                    <div id="teamMembersList">
+                        <!-- Dynamic inputs will be added here -->
+                        <div class="team-member-row">
+                            <input type="text" name="teamMember[]" placeholder="Team Member 1 Name" required>
+                        </div>
+                    </div>
+                    <button type="button" id="addMemberBtn" class="secondary-btn">+ Add Team Member</button>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" id="submitBtn" class="primary-btn">Submit Entry</button>
+            </div>
+            
+            <div id="formMessage" class="message hidden"></div>
+        </form>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
