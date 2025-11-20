@@ -2,7 +2,7 @@
  * CONFIGURATION
  * Replace the URL below with your deployed Google Apps Script Web App URL.
  */
-const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxej24vaQfaG7p5ZqeqGzjaO9IkOkp_BZAccry_TyRduAEwqSFu-UNUwO3Ee1PX9PFc/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('entryForm');
@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <button type="button" class="remove-btn" aria-label="Remove member">&times;</button>
         `;
         teamMembersList.appendChild(div);
-        
+
         // Focus on the new input
         div.querySelector('input').focus();
     });
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Form Submission
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         if (GOOGLE_SCRIPT_URL === 'YOUR_GOOGLE_SCRIPT_URL_HERE' || !GOOGLE_SCRIPT_URL) {
             showMessage('Error: Google Script URL is not configured. Please see the setup guide.', 'error');
             return;
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Collect data
         const formData = new FormData(form);
         const teamMembers = formData.getAll('teamMember[]');
-        
+
         const data = {
             schoolName: formData.get('schoolName'),
             contactName: formData.get('contactName'),
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Standard fetch with CORS is best if the script handles OPTIONS/CORS correctly.
             // For simplicity with Apps Script, we often use text/plain payload to avoid preflight OPTIONS check issues 
             // or ensure the script returns correct headers.
-            
+
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify(data)
@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
         formMessage.textContent = text;
         formMessage.className = `message ${type}`;
         formMessage.classList.remove('hidden');
-        
+
         if (type === 'success') {
             setTimeout(() => {
                 formMessage.classList.add('hidden');
