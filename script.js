@@ -41,16 +41,16 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(GOOGLE_SCRIPT_URL, {
                 method: 'POST',
                 body: JSON.stringify(data)
-                // Intentionally not setting Content-Type to application/json to avoid preflight in some cases,
-                // but standard Apps Script handling usually requires text/plain or handling the preflight.
-                // We will use text/plain in the Apps Script to be safe.
             });
 
-            if (response.ok) {
+            const result = await response.json();
+
+            if (result.result === 'success') {
                 showMessage('Success! Your interest has been registered.', 'success');
                 form.reset();
             } else {
-                throw new Error('Network response was not ok');
+                console.log(result);
+                throw new Error(result.error || 'Unknown error from server');
             }
         } catch (error) {
             console.error('Error:', error);
