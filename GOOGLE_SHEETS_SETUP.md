@@ -11,7 +11,7 @@ Follow these steps to set up your backend.
    - **A1**: Timestamp
    - **B1**: School Name
    - **C1**: Contact Name
-   - **D1**: Contact Number
+   - **D1**: Contact Email
    - **E1**: Age Group
    - **F1**: Team Members
 
@@ -41,7 +41,7 @@ function doPost(e) {
       new Date(),           // Timestamp
       data.schoolName,
       data.contactName,
-      data.contactNumber,
+      data.contactEmail,
       data.ageGroup,
       data.teamMembers
     ]]);

@@ -2,7 +2,7 @@
  * CONFIGURATION
  * Replace the URL below with your deployed Google Apps Script Web App URL.
  */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxej24vaQfaG7p5ZqeqGzjaO9IkOkp_BZAccry_TyRduAEwqSFu-UNUwO3Ee1PX9PFc/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxej24vaQfaG7p5ZqeqGzjaO9IkOkp_BZAccry_TyRduAEwqSFu-UNUwO3Ee1PX9PFc/exe';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('entryForm');
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = {
             schoolName: formData.get('schoolName'),
             contactName: formData.get('contactName'),
-            contactNumber: formData.get('contactNumber'),
+            contactEmail: formData.get('contactEmail'),
             ageGroup: formData.get('ageGroup'),
             teamMembers: teamMembers.join(', '), // Join names with comma
             timestamp: new Date().toISOString()

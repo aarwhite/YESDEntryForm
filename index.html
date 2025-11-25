@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="container">
         <header>
@@ -21,7 +23,8 @@
                 <h2>School Details</h2>
                 <div class="form-group">
                     <label for="schoolName">School Name</label>
-                    <input type="text" id="schoolName" name="schoolName" required placeholder="e.g. St. Mary's High School">
+                    <input type="text" id="schoolName" name="schoolName" required
+                        placeholder="e.g. St. Mary's High School">
                 </div>
             </div>
 
@@ -30,11 +33,13 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="contactName">Contact Name</label>
-                        <input type="text" id="contactName" name="contactName" required placeholder="Teacher or Coordinator Name">
+                        <input type="text" id="contactName" name="contactName" required
+                            placeholder="Teacher or Coordinator Name">
                     </div>
                     <div class="form-group">
-                        <label for="contactNumber">Contact Number</label>
-                        <input type="tel" id="contactNumber" name="contactNumber" required placeholder="e.g. 020 1234 5678">
+                        <label for="contactEmail">Contact Email Address</label>
+                        <input type="email" id="contactEmail" name="contactEmail" required
+                            placeholder="e.g. teacher@school.edu">
                     </div>
                 </div>
             </div>
@@ -66,10 +71,11 @@
             <div class="form-actions">
                 <button type="submit" id="submitBtn" class="primary-btn">Submit Entry</button>
             </div>
-            
+
             <div id="formMessage" class="message hidden"></div>
         </form>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>
