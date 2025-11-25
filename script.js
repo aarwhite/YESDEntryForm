@@ -2,50 +2,12 @@
  * CONFIGURATION
  * Replace the URL below with your deployed Google Apps Script Web App URL.
  */
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxej24vaQfaG7p5ZqeqGzjaO9IkOkp_BZAccry_TyRduAEwqSFu-UNUwO3Ee1PX9PFc/exe';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzFPhfdMhw8wQ8LBEwbOv1Chij26epfQDVDl5Srgul8j2zhi8CoRPVd3k1NrhWgawtoEw/exec';
 
 document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('entryForm');
-    const addMemberBtn = document.getElementById('addMemberBtn');
-    const teamMembersList = document.getElementById('teamMembersList');
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
-
-    // Add Team Member
-    addMemberBtn.addEventListener('click', () => {
-        const memberCount = teamMembersList.children.length + 1;
-        const div = document.createElement('div');
-        div.className = 'team-member-row';
-        div.innerHTML = `
-            <input type="text" name="teamMember[]" placeholder="Team Member ${memberCount} Name" required>
-            <button type="button" class="remove-btn" aria-label="Remove member">&times;</button>
-        `;
-        teamMembersList.appendChild(div);
-
-        // Focus on the new input
-        div.querySelector('input').focus();
-    });
-
-    // Remove Team Member
-    teamMembersList.addEventListener('click', (e) => {
-        if (e.target.closest('.remove-btn')) {
-            const row = e.target.closest('.team-member-row');
-            // Don't remove if it's the only one (optional rule, but good UX)
-            if (teamMembersList.children.length > 1) {
-                row.remove();
-                updatePlaceholders();
-            } else {
-                alert('You must have at least one team member.');
-            }
-        }
-    });
-
-    function updatePlaceholders() {
-        const inputs = teamMembersList.querySelectorAll('input[name="teamMember[]"]');
-        inputs.forEach((input, index) => {
-            input.placeholder = `Team Member ${index + 1} Name`;
-        });
-    }
 
     // Form Submission
     form.addEventListener('submit', async (e) => {
@@ -60,14 +22,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Collect data
         const formData = new FormData(form);
-        const teamMembers = formData.getAll('teamMember[]');
 
         const data = {
             schoolName: formData.get('schoolName'),
             contactName: formData.get('contactName'),
             contactEmail: formData.get('contactEmail'),
-            ageGroup: formData.get('ageGroup'),
-            teamMembers: teamMembers.join(', '), // Join names with comma
+            estimatedTeams: formData.get('estimatedTeams'),
             timestamp: new Date().toISOString()
         };
 
@@ -87,14 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             if (response.ok) {
-                showMessage('Success! Your entry has been submitted.', 'success');
+                showMessage('Success! Your interest has been registered.', 'success');
                 form.reset();
-                // Reset team members to just one
-                teamMembersList.innerHTML = `
-                    <div class="team-member-row">
-                        <input type="text" name="teamMember[]" placeholder="Team Member 1 Name" required>
-                    </div>
-                `;
             } else {
                 throw new Error('Network response was not ok');
             }

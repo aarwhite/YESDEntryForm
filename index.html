@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>School Competition Entry Form</title>
+    <title>Register Your Interest</title>
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,8 +14,20 @@
 <body>
     <div class="container">
         <header>
-            <h1>Competition Entry Form</h1>
-            <p>Register your school team for the upcoming challenge.</p>
+            <h1>Register Your Interest</h1>
+            <p class="subtitle">Register your school's interest for the upcoming Young Engineers and Scientists of
+                Derbyshire challenge.</p>
+
+            <div class="event-info">
+                <div class="info-item">
+                    <span class="info-label">When:</span> Tuesday 8th July 2025
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Where:</span> Derby University
+                </div>
+            </div>
+
+            <a href="https://www.yesd.uk" target="_blank" class="learn-more-link">Learn more at yesd.uk &rarr;</a>
         </header>
 
         <form id="entryForm">
@@ -45,26 +57,10 @@
             </div>
 
             <div class="form-section">
-                <h2>Team Details</h2>
+                <h2>Interest Details</h2>
                 <div class="form-group">
-                    <label for="ageGroup">Age Group</label>
-                    <select id="ageGroup" name="ageGroup" required>
-                        <option value="" disabled selected>Select Year Group</option>
-                        <option value="Year 7">Year 7</option>
-                        <option value="Year 9">Year 9</option>
-                        <option value="Sixth Form">Sixth Form</option>
-                    </select>
-                </div>
-
-                <div class="team-members-container">
-                    <label>Team Members</label>
-                    <div id="teamMembersList">
-                        <!-- Dynamic inputs will be added here -->
-                        <div class="team-member-row">
-                            <input type="text" name="teamMember[]" placeholder="Team Member 1 Name" required>
-                        </div>
-                    </div>
-                    <button type="button" id="addMemberBtn" class="secondary-btn">+ Add Team Member</button>
+                    <label for="estimatedTeams">Estimated Number of Teams</label>
+                    <input type="number" id="estimatedTeams" name="estimatedTeams" min="1" placeholder="e.g. 2">
                 </div>
             </div>
 

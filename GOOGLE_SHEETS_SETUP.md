@@ -12,8 +12,7 @@ Follow these steps to set up your backend.
    - **B1**: School Name
    - **C1**: Contact Name
    - **D1**: Contact Email
-   - **E1**: Age Group
-   - **F1**: Team Members
+   - **E1**: Estimated Teams
 
 ## 2. Create the Apps Script
 1. In your Google Sheet, go to **Extensions** > **Apps Script**.
@@ -37,14 +36,30 @@ function doPost(e) {
     const nextRow = sheet.getLastRow() + 1;
 
     // Add the row
-    sheet.getRange(nextRow, 1, 1, 6).setValues([[
+    sheet.getRange(nextRow, 1, 1, 5).setValues([[
       new Date(),           // Timestamp
       data.schoolName,
       data.contactName,
       data.contactEmail,
-      data.ageGroup,
-      data.teamMembers
+      data.estimatedTeams
     ]]);
+
+    // Send Confirmation Email
+    if (data.contactEmail) {
+      const subject = "Registration Confirmation - YESD Competition";
+      const body = `Dear ${data.contactName},\n\n` +
+                   `Thank you for registering ${data.schoolName}'s interest in the upcoming challenge.\n\n` +
+                   `We have received your details and noted your estimated number of teams: ${data.estimatedTeams}.\n\n` +
+                   `We will be in touch shortly with more information.\n\n` +
+                   `Best regards,\n` +
+                   `The YESD Team`;
+      
+      MailApp.sendEmail({
+        to: data.contactEmail,
+        subject: subject,
+        body: body
+      });
+    }
 
     return ContentService
       .createTextOutput(JSON.stringify({ "result": "success", "row": nextRow }))
